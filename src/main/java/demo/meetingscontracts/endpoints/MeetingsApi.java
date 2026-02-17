@@ -7,7 +7,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
+import java.util.List;
 import java.util.UUID;
 
 @RequestMapping("/api/meetings")
@@ -21,10 +21,15 @@ public interface MeetingsApi {
     MeetingResponse getMeeting(@PathVariable UUID uuid);
 
     @Tag(name = "Meeting", description = "Встречи")
+    @Operation(summary = "Получение всех встреч")
+    @ApiResponse(responseCode = "200", description = "Все встречи")
+    @GetMapping()
+    List<MeetingResponse> getMeetings();
+
+    @Tag(name = "Meeting", description = "Встречи")
     @Operation(summary = "Создание встречи")
     @ApiResponse(responseCode = "201", description = "Встреча успешно создана!")
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/create")
     MeetingResponse createMeeting(@RequestBody MeetingRequest request);
-
 }
