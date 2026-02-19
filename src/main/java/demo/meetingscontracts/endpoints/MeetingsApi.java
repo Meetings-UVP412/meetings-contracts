@@ -7,6 +7,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 import java.util.UUID;
 
@@ -32,4 +33,15 @@ public interface MeetingsApi {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/create")
     MeetingResponse createMeeting(@RequestBody MeetingRequest request);
+
+    @Tag(name = "Meeting", description = "Встречи")
+    @Operation(summary = "Загрузка аудио файла")
+    @ApiResponse(responseCode = "201", description = "Файл успешно загружен!")
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping("/uploadFile")
+    String uploadFile(@RequestParam("file") MultipartFile file,
+                      @RequestParam("ord") Integer ord,
+                      @RequestParam("isLast") Boolean isLast,
+                      @RequestParam("m-uid") UUID uuid
+    );
 }
