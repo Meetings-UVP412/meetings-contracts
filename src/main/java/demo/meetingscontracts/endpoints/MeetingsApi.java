@@ -37,6 +37,7 @@ public interface MeetingsApi {
     @Tag(name = "Meeting", description = "Встречи")
     @Operation(summary = "Загрузка аудио файла")
     @ApiResponse(responseCode = "201", description = "Файл успешно загружен!")
+    @ApiResponse(responseCode = "400", description = "Встреча должна быть новой!")
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/uploadFile")
     String uploadFile(@RequestParam("file") MultipartFile file,
