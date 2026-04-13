@@ -6,7 +6,6 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
@@ -46,10 +45,4 @@ public interface MeetingsApi {
                       @RequestParam("isLast") Boolean isLast,
                       @RequestParam("m-uid") UUID uuid
     );
-
-    @Tag(name = "Meeting", description = "Встречи")
-    @Operation(summary = "Получение аудио файла")
-    @ApiResponse(responseCode = "200", description = "Файл получен!")
-    @GetMapping("/{uuid}/chunks/{ord}")
-    ResponseEntity<byte[]> getAudioChunk(@PathVariable UUID uuid, @PathVariable Integer ord);
 }

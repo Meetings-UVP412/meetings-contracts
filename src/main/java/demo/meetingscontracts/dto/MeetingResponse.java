@@ -1,13 +1,12 @@
 package demo.meetingscontracts.dto;
 
 import java.time.LocalDateTime;
-import java.util.List;
-import java.util.UUID;
+import java.util.Set;
 
 public record MeetingResponse(
-        UUID uid,
+        String uuid,
         String name,
-        List<Integer> users,
+        Set<Integer> users,
         Integer authorId,
         LocalDateTime createdAt,
         Integer duration,
