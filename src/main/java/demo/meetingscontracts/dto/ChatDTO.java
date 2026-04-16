@@ -7,5 +7,6 @@ public record ChatDTO(
         String uuid,
         String title,
         List<MessageDTO> messages,
-        LocalDateTime createdAt
+        LocalDateTime createdAt,
+        String meetingUUID
 ) {}
