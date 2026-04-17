@@ -6,11 +6,12 @@ import java.util.Set;
 public record MeetingResponse(
         String uuid,
         String name,
-        Set<Integer> users,
         Integer authorId,
+        String author,
         LocalDateTime createdAt,
         Integer duration,
         String comment,
         String link,
-        MeetingStatus status
+        MeetingStatus status,
+        Set<UserDTO> users
 ) { }
